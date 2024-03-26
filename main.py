@@ -11,10 +11,10 @@ async def on_ready():
     print(f'Logged in as {bot.user.name}')
 
 @bot.command()
-async def clear(ctx, user: discord.User):
+async def clear(ctx, *users: discord.User):
     await ctx.message.delete()
     async for message in ctx.channel.history(limit=None):
-        if message.author == user:
+        if message.author in users:
             await message.delete()
 
 bot.run('TE4NDk0NjI5NzA2OTkxMjIxOA.GuqbuO.lKBGNKZNT07OPUoKsMVtZqDXe0nOoyOjnqM6qU')
